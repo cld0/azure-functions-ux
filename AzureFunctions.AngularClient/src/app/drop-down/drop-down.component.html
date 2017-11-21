@@ -3,11 +3,15 @@
     class="drop-down-container"
     [class.dirty]="highlightDirty && control?.dirty"
     [class.disabled]="control ? control.disabled : disabled"
-    [class.small]="size === 'small'">
+    [class.small]="size === 'small'"
+    [class.large]="size === 'large'"
+    [class.focused]="hasFocus">
 
     <select
         *ngIf="!control"
         (change)="onSelect($event.target.value)"
+        (focus)="hasFocus=true"
+        (blur)="hasFocus=false"
         class="drop-down-select"
         [disabled]="disabled">
 
@@ -28,6 +32,8 @@
     <select
         *ngIf="control"
         (change)="onSelectValue($event.target.value)"
+        (focus)="hasFocus=true"
+        (blur)="hasFocus=false"
         class="drop-down-select"
         [formControl]="control"
         #selectInput>
