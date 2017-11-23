@@ -1,267 +1,319 @@
 ﻿
-export class HttpMethods {
-    public GET = "get";
-    public POST = "post";
-    public DELETE = "delete";
-    public HEAD = "head";
-    public PATCH = "patch";
-    public PUT = "put";
-    public OPTIONS = "options";
-    public TRACE = "trace";
+export namespace Constants {
+    export namespace HttpMethods {
+        export const GET = 'get';
+        export const POST = 'post';
+        export const DELETE = 'delete';
+        export const HEAD = 'head';
+        export const PATCH = 'patch';
+        export const PUT = 'put';
+        export const OPTIONS = 'options';
+        export const TRACE = 'trace';
+    }
+    export const serviceHost =
+        window.location.hostname === 'localhost' || window.appsvc.env.runtimeType === 'Standalone'
+            ? `https://${window.location.hostname}:${window.location.port}/`
+            : `https://${window.location.hostname}/`;
 
-    constructor() { }
-}
+    export const nodeVersion = '6.5.0';
+    export const latest = 'latest';
+    export const disabled = 'disabled';
+    export const runtimeVersionAppSettingName = 'FUNCTIONS_EXTENSION_VERSION';
+    export const nodeVersionAppSettingName = 'WEBSITE_NODE_DEFAULT_VERSION';
+    export const azureJobsExtensionVersion = 'AZUREJOBS_EXTENSION_VERSION';
+    export const routingExtensionVersionAppSettingName = 'ROUTING_EXTENSION_VERSION';
+    export const functionAppEditModeSettingName = 'FUNCTION_APP_EDIT_MODE';
+    export const instrumentationKeySettingName = 'APPINSIGHTS_INSTRUMENTATIONKEY';
+    export const slotsSecretStorageSettingsName = 'AzureWebJobsSecretStorageType';
+    export const slotsSecretStorageSettingsValue = 'Blob';
+    export const contentShareConfigSettingsName = 'WEBSITE_CONTENTSHARE';
+    export const azureWebJobsDashboardSettingsName = 'AzureWebJobsDashboard';
 
-export class Constants {
-    public static serviceHost =
-    window.location.hostname === "localhost" || window.appsvc.env.runtimeType === "Standalone"
-        ? `https://${window.location.hostname}:${window.location.port}/`
-        : `https://${window.location.hostname}/`;
+    export const swaggerSecretName = 'swaggerdocumentationkey';
+    export const eventGridName = 'eventgridextensionconfig_extension';
 
-    public static nodeVersion = '6.5.0';
-    public static latest = 'latest';
-    public static disabled = 'disabled';
-    public static runtimeVersionAppSettingName = 'FUNCTIONS_EXTENSION_VERSION';
-    public static nodeVersionAppSettingName = 'WEBSITE_NODE_DEFAULT_VERSION';
-    public static azureJobsExtensionVersion = 'AZUREJOBS_EXTENSION_VERSION';
-    public static routingExtensionVersionAppSettingName = 'ROUTING_EXTENSION_VERSION';
-    public static functionAppEditModeSettingName = 'FUNCTION_APP_EDIT_MODE';
-    public static instrumentationKeySettingName = 'APPINSIGHTS_INSTRUMENTATIONKEY';
-    public static slotsSecretStorageSettingsName = "AzureWebJobsSecretStorageType";
-    public static slotsSecretStorageSettingsValue = "Blob";
-    public static contentShareConfigSettingsName = "WEBSITE_CONTENTSHARE";
-    public static azureWebJobsDashboardSettingsName = 'AzureWebJobsDashboard';
+    export const portalHostName = 'https://portal.azure.com';
+    export const webAppsHostName = 'https://web1.appsvcux.ext.azure.com';
+    export const msPortalHostName = 'https://ms.portal.azure.com';
+    export const ReadWriteMode = 'readWrite'.toLocaleLowerCase();
+    export const ReadOnlyMode = 'readOnly'.toLocaleLowerCase();
 
-    public static httpMethods = new HttpMethods();
-    public static swaggerSecretName = 'swaggerdocumentationkey';
-    public static eventGridName = 'eventgridextensionconfig_extension';
+    export const OIDKey = 'http://schemas.microsoft.com/identity/claims/objectidentifier';
+    export const BYOBTokenMapSettingName = 'BYOB_TokenMap';
+    export const defaultBYOBLocation = '/data/byob_graphmap';
+    export const MSGraphResource = 'https://graph.microsoft.com';
+    export const latestMSGraphVersion = '1.0';
+    export const WebhookHandlerFunctionName = 'RefreshO365Subscriptions';
+    export const WebhookHandlerFunctionId = 'TimerTrigger-CSharpWebhookHandler';
+    export const WebhookFunctionName = 'MSGraphWebhook';
 
-    public static portalHostName = 'https://portal.azure.com';
-    public static webAppsHostName = 'https://web1.appsvcux.ext.azure.com';
-    public static msPortalHostName = 'https://ms.portal.azure.com';
-    public static ReadWriteMode = 'readWrite'.toLocaleLowerCase();
-    public static ReadOnlyMode = 'readOnly'.toLocaleLowerCase();
+    export namespace TabCommunicationVerbs {
+        export const getStartInfo = 'get-startup-info';
+        export const sentStartInfo = 'startup-info';
+        export const updatedFile = 'updated-file-notice'
+        export const newToken = 'new-token';
+        export const parentClosed = 'parent-window-closed';
+    }
 
-    public static OIDKey = 'http://schemas.microsoft.com/identity/claims/objectidentifier';
-    public static BYOBTokenMapSettingName = 'BYOB_TokenMap';
-    public static defaultBYOBLocation = '/data/byob_graphmap';
-    public static MSGraphResource = 'https://graph.microsoft.com';
-    public static latestMSGraphVersion = '1.0';
-    public static WebhookHandlerFunctionName = "RefreshO365Subscriptions";
-    public static WebhookHandlerFunctionId = "TimerTrigger-CSharpWebhookHandler";
-    public static WebhookFunctionName = "MSGraphWebhook";
-}
+    export namespace SiteTabIds {
+        export const overview = 'overview';
+        export const monitor = 'monitor';
+        export const features = 'platformFeatures';
+        export const functionRuntime = 'functionRuntimeSettings';
+        export const apiDefinition = 'apiDefinition';
+        export const config = 'config';
+        export const applicationSettings = 'appSettings';
+        export const logicApps = 'logicApps';
+    }
 
-export class TabCommunicationVerbs {
-    public static getStartInfo = "get-startup-info";
-    public static sentStartInfo = "startup-info";
-    public static updatedFile = "updated-file-notice"
-    public static newToken = "new-token";
-    public static parentClosed = "parent-window-closed";
-}
+    export namespace Arm {
+        export const MaxSubscriptionBatchSize = 40;
+    }
 
-export class SiteTabIds {
-    public static readonly overview = "overview";
-    public static readonly monitor = "monitor";
-    public static readonly features = "platformFeatures";
-    public static readonly functionRuntime = "functionRuntimeSettings";
-    public static readonly apiDefinition = "apiDefinition";
-    public static readonly config = "config";
-    public static readonly applicationSettings = "appSettings";
-    public static readonly logicApps = "logicApps";
-}
+    export namespace AvailabilityStates {
+        export const unknown = 'unknown';
+        export const unavailable = 'unavailable';
+        export const available = 'available';
 
-export class Arm {
-    public static MaxSubscriptionBatchSize = 40;
-}
+        // Not entirely sure what this means, but it seems to be synonymous with unavailable
+        export const userinitiated = 'userinitiated';
+    }
 
-export class AvailabilityStates {
-    public static unknown = 'unknown';
-    public static unavailable = 'unavailable';
-    public static available = 'available';
+    export namespace NotificationIds {
+        export const alwaysOn = 'alwaysOn';
+        export const newRuntimeVersion = 'newRuntimeVersion';
+        export const slotsHostId = 'slotsBlobStorage';
+        export const runtimeV2 = 'runtimeV2';
+    }
 
-    // Not entirely sure what this means, but it seems to be synonymous with unavailable
-    public static userinitiated = 'userinitiated';
-}
+    export namespace Validations {
+        export const websiteNameMinLength: number = 2;
+        export const websiteNameMaxLength: number = 60;
+    }
 
-export class NotificationIds {
-    public static alwaysOn = 'alwaysOn';
-    public static newRuntimeVersion = 'newRuntimeVersion';
-    public static slotsHostId = 'slotsBlobStorage';
-    public static runtimeV2 = 'runtimeV2';
-}
+    export namespace Regex {
+        export const invalidEntityName: RegExp = /[^\u00BF-\u1FFF\u2C00-\uD7FF\a-zA-Z0-9-]/;// matches any character(i.e. german, chinese, english) or -
+        export const header: RegExp = /^[a-zA-Z0-9\-_]+$/;
+        export const functionName: RegExp = /^[a-zA-Z][a-zA-Z0-9_\-]{0,127}$/;
+    }
 
-export class Validations {
-    public static websiteNameMinLength: number = 2;
-    public static websiteNameMaxLength: number = 60;
-}
+    export namespace Links {
+        export const standaloneCreateLearnMore = 'https://go.microsoft.com/fwlink/?linkid=848756';
+        export const pythonLearnMore = 'https://go.microsoft.com/fwlink/?linkid=852196';
+        export const clientAffinityLearnMore = 'https://go.microsoft.com/fwlink/?linkid=798249';
+    }
 
-export class Regex {
-    public static readonly invalidEntityName: RegExp = /[^\u00BF-\u1FFF\u2C00-\uD7FF\a-zA-Z0-9-]/;//matches any character(i.e. german, chinese, english) or -
-    public static readonly header: RegExp = /^[a-zA-Z0-9\-_]+$/;
-    public static readonly functionName: RegExp = /^[a-zA-Z][a-zA-Z0-9_\-]{0,127}$/;
-}
+    export namespace LocalStorageKeys {
+        export const siteTabs = '/site/tabs';
+        export const savedSubsKey = '/subscriptions/selectedIds';
+    }
 
-export class Links {
-    public static standaloneCreateLearnMore = "https://go.microsoft.com/fwlink/?linkid=848756";
-    public static pythonLearnMore = "https://go.microsoft.com/fwlink/?linkid=852196";
-    public static clientAffinityLearnMore = "https://go.microsoft.com/fwlink/?linkid=798249";
-}
+    export namespace Order {
+        export const templateOrder: string[] =
+            [
+                'HttpTrigger-',
+                'TimerTrigger-',
+                'QueueTrigger-',
+                'ServiceBusQueueTrigger-',
+                'ServiceBusTopicTrigger-',
+                'BlobTrigger-',
+                'EventHubTrigger-',
+                'CosmosDBTrigger-',
+                'IoTHubTrigger-',
+                'IoTHubServiceBusQueueTrigger-',
+                'IoTHubServiceBusTopicTrigger-',
+                'GenericWebHook-',
+                'GitHubCommenter-',
+                'GitHubWebHook-',
+                'HttpGET(CRUD)-',
+                'HttpPOST(CRUD)-',
+                'HttpPUT(CRUD)-',
+                'HttpTriggerWithParameters-',
+                'ScheduledMail-',
+                'SendGrid-',
+                'FaceLocator-',
+                'ImageResizer-',
+                'SasToken-',
+                'ManualTrigger-',
+                'CDS-',
+                'AppInsightsHttpAvailability-',
+                'AppInsightsRealtimePowerBI-',
+                'AppInsightsScheduledAnalytics-',
+                'AppInsightsScheduledDigest-',
+                'ExternalFileTrigger-',
+                'ExternalTable-'
+            ];
+    }
 
-export class LocalStorageKeys {
-    public static readonly siteTabs = '/site/tabs';
-    public static readonly savedSubsKey = '/subscriptions/selectedIds';
-}
+    // NOTE: If you change any string values here, make sure you search for references to the values
+    // in any HTML templates first!
+    export namespace ScenarioIds {
+        export const addSiteConfigTab = 'AddSiteConfigTab';
+        export const addSiteFeaturesTab = 'AddSiteFeaturesTab';
+        export const getSiteSlotLimits = 'GetSiteSlotLimits';
+        export const showSiteAvailability = 'ShowSiteAvailability';
+        export const addResourceExplorer = 'AddResourceExplorer';
+        export const addPushNotifications = 'AddPushNotifications';
+        export const addMsi = 'AddMsi';
+        export const addTinfoil = 'AddTinfoil';
+        export const addSiteQuotas = 'ShowSiteQuotas';
+        export const addConsole = 'AddConsole';
+        export const addSsh = 'AddSsh';
+        export const enablePushNotifications = 'EnablePushNotifications';
+        export const enableAuth = 'EnableAuth';
+        export const enableMsi = 'EnableMsi';
+        export const enableNetworking = 'EnableNetworking';
+        export const enableAppServiceEditor = 'EnableAppServiceEditor';
+        export const enableExtensions = 'EnableExtensions';
+        export const enableLogStream = 'EnableLogStream';
+        export const enableProcessExplorer = 'EnableProcessExplorer';
+        export const enableBackups = 'EnableBackups';
+        export const enableTinfoil = 'EnableTinfoil';
+        export const addSiteFileStorage = 'ShowSiteFileStorage';
+        export const showSitePin = 'ShowSitePin';
+        export const showCreateRefreshSub = 'ShowCreateRefreshSub';
+        export const enablePlatform64 = 'EnablePlatform64';
+        export const enableAlwaysOn = 'EnableAlwaysOn';
+        export const deleteAppDirectly = 'deleteAppDirectly';
+        export const enableAutoSwap = 'EnableAutoSwap';
 
-export class Order {
-    public static templateOrder: string[] =
-    [
-        'HttpTrigger-',
-        'TimerTrigger-',
-        'QueueTrigger-',
-        'ServiceBusQueueTrigger-',
-        'ServiceBusTopicTrigger-',
-        'BlobTrigger-',
-        'EventHubTrigger-',
-        'CosmosDBTrigger-',
-        'IoTHubTrigger-',
-        'IoTHubServiceBusQueueTrigger-',
-        'IoTHubServiceBusTopicTrigger-',
-        'GenericWebHook-',
-        'GitHubCommenter-',
-        'GitHubWebHook-',
-        'HttpGET(CRUD)-',
-        'HttpPOST(CRUD)-',
-        'HttpPUT(CRUD)-',
-        'HttpTriggerWithParameters-',
-        'ScheduledMail-',
-        'SendGrid-',
-        'FaceLocator-',
-        'ImageResizer-',
-        'SasToken-',
-        'ManualTrigger-',
-        'CDS-',
-        'AppInsightsHttpAvailability-',
-        'AppInsightsRealtimePowerBI-',
-        'AppInsightsScheduledAnalytics-',
-        'AppInsightsScheduledDigest-',
-        'ExternalFileTrigger-',
-        'ExternalTable-'
-    ]
-}
+        export const createApp = 'createApp';
+        export const filterAppNodeChildren = 'FilterAppNodeChildren';
+        export const headerOnTopOfSideNav = 'headerOnTopOfSideNav';
+        export const topBarWarning = 'TopBarWarning';
+        export const userMenu = 'UserMenu';
+        export const standAloneUserMenu = 'StandAloneUserMenu';
+    }
 
-// NOTE: If you change any string values here, make sure you search for references to the values
-// in any HTML templates first!
-export class ScenarioIds {
-    public static readonly addSiteConfigTab = 'AddSiteConfigTab';
-    public static readonly addSiteFeaturesTab = 'AddSiteFeaturesTab';
-    public static readonly getSiteSlotLimits = 'GetSiteSlotLimits';
-    public static readonly showSiteAvailability = 'ShowSiteAvailability';
-    public static readonly addResourceExplorer = 'AddResourceExplorer';
-    public static readonly addPushNotifications = 'AddPushNotifications';
-    public static readonly addMsi = 'AddMsi';
-    public static readonly addTinfoil = 'AddTinfoil';
-    public static readonly addSiteQuotas = 'ShowSiteQuotas';
-    public static readonly addConsole = 'AddConsole';
-    public static readonly addSsh = 'AddSsh';
-    public static readonly enablePushNotifications = 'EnablePushNotifications';
-    public static readonly enableAuth = 'EnableAuth';
-    public static readonly enableMsi = 'EnableMsi';
-    public static readonly enableNetworking = 'EnableNetworking';
-    public static readonly enableAppServiceEditor = 'EnableAppServiceEditor';
-    public static readonly enableExtensions = 'EnableExtensions';
-    public static readonly enableLogStream = 'EnableLogStream';
-    public static readonly enableProcessExplorer = 'EnableProcessExplorer';
-    public static readonly enableBackups = 'EnableBackups';
-    public static readonly enableTinfoil = 'EnableTinfoil';
-    public static readonly addSiteFileStorage = 'ShowSiteFileStorage';
-    public static readonly showSitePin = 'ShowSitePin';
-    public static readonly showCreateRefreshSub = 'ShowCreateRefreshSub';
-    public static readonly enablePlatform64 = 'EnablePlatform64';
-    public static readonly enableAlwaysOn = 'EnableAlwaysOn';
-    public static readonly deleteAppDirectly = 'deleteAppDirectly';
-    public static readonly enableAutoSwap = 'EnableAutoSwap';
+    export namespace ServerFarmSku {
+        export const free = 'Free';
+        export const shared = 'Shared';
+        export const basic = 'Basic';
+        export const standard = 'Standard';
+        export const premium = 'Premium';
+        export const premiumV2 = 'PremiumV2';
+        export const isolated = 'Isolated';
+        export const dynamic = 'Dynamic';
+    }
 
-    public static readonly createApp = 'createApp';
-    public static readonly filterAppNodeChildren = 'FilterAppNodeChildren';
-    public static readonly headerOnTopOfSideNav = 'headerOnTopOfSideNav';
-    public static readonly topBarWarning = 'TopBarWarning';
-    public static readonly userMenu = 'UserMenu';
-    public static readonly standAloneUserMenu = 'StandAloneUserMenu';
-}
+    export namespace NationalCloudArmUris {
+        export const fairfax = 'https://management.usgovcloudapi.net';
+        export const blackforest = 'https://management.microsoftazure.de';
+        export const mooncake = 'https://management.chinacloudapi.cn';
+    }
 
-export class ServerFarmSku {
-    public static readonly free = 'Free';
-    public static readonly shared = 'Shared';
-    public static readonly basic = 'Basic';
-    public static readonly standard = 'Standard';
-    public static readonly premium = 'Premium';
-    public static readonly premiumV2 = 'PremiumV2';
-    public static readonly isolated = 'Isolated';
-    public static readonly dynamic = 'Dynamic';
-}
+    export namespace LogCategories {
+        export const FunctionEdit = 'FunctionEdit';
+        export const FunctionMonitor = 'FunctionMonitor';
+        export const SideNav = 'SideNav';
+        export const siteDashboard = 'SiteDashboard';
+        export const scenarioService = 'ScenarioService';
+        export const apiDetails = 'ApiDetails';
+        export const broadcastService = 'BroadcastService';
+        export const newSlot = 'NewSlot';
+        export const svgLoader = 'SvgLoader';
+        export const busyState = 'BusyState';
+        export const siteConfig = 'SiteConfig';
+        export const generalSettings = 'GeneralSettings';
+        export const appSettings = 'AppSettings';
+        export const connectionStrings = 'ConnectionStrings';
+        export const defaultDocuments = 'DefaultDocuments';
+        export const handlerMappings = 'HandlerMappings';
+        export const virtualDirectories = 'VirtualDirectories';
+        export const logicapps = 'LogicApps';
+        export const subsCriptions = 'SubsCriptions';
+        export const functionAppSettings = 'FunctionAppSettings';
+        export const swaggerDefinition = 'SwaggerDefinition';
+        export const binding = 'Binding';
+        export const functionNew = 'FunctionNew';
+    }
 
-export class NationalCloudArmUris {
-    public static readonly fairfax = 'https://management.usgovcloudapi.net';
-    public static readonly blackforest = 'https://management.microsoftazure.de';
-    public static readonly mooncake = 'https://management.chinacloudapi.cn';
-}
+    export namespace KeyCodes {
+        export const tab = 9;
+        export const enter = 13;
+        export const shiftLeft = 16;
+        export const space = 32;
+        export const escape = 27;
+        export const end = 35;
+        export const home = 36;
+        export const arrowLeft = 37;
+        export const arrowUp = 38;
+        export const arrowRight = 39;
+        export const arrowDown = 40;
+        export const _delete = 46;
+        export const f2 = 113;
+    }
 
-export class LogCategories {
-    public static readonly FunctionEdit = 'FunctionEdit';
-    public static readonly FunctionMonitor = 'FunctionMonitor';
-    public static readonly SideNav = 'SideNav';
-    public static readonly siteDashboard = 'SiteDashboard';
-    public static readonly scenarioService = 'ScenarioService';
-    public static readonly apiDetails = 'ApiDetails';
-    public static readonly broadcastService = 'BroadcastService';
-    public static readonly newSlot = 'NewSlot';
-    public static readonly svgLoader = 'SvgLoader';
-    public static readonly busyState = 'BusyState';
-    public static readonly siteConfig = 'SiteConfig';
-    public static readonly generalSettings = 'GeneralSettings';
-    public static readonly appSettings = 'AppSettings';
-    public static readonly connectionStrings = 'ConnectionStrings';
-    public static readonly defaultDocuments = 'DefaultDocuments';
-    public static readonly handlerMappings = 'HandlerMappings';
-    public static readonly virtualDirectories = 'VirtualDirectories';
-    public static readonly logicapps = 'LogicApps';
-    public static readonly subsCriptions = 'SubsCriptions';
-    public static readonly functionAppSettings = 'FunctionAppSettings';
-    public static readonly swaggerDefinition = 'SwaggerDefinition';
-    public static readonly binding = 'Binding';
-    public static readonly functionNew = 'FunctionNew';
-}
+    export namespace ExtensionInstallStatus {
+        export const Started = 'Started';
+        export const Succeeded = 'Succeeded';
+        export const Failed = 'Failed';
+    }
 
-export class KeyCodes {
-    public static readonly tab = 9;
-    public static readonly enter = 13;
-    public static readonly shiftLeft = 16;
-    public static readonly space = 32;
-    public static readonly escape = 27;
-    public static readonly end = 35;
-    public static readonly home = 36;
-    public static readonly arrowLeft = 37;
-    public static readonly arrowUp = 38;
-    public static readonly arrowRight = 39;
-    public static readonly arrowDown = 40;
-    public static readonly delete = 46;
-    public static readonly f2 = 113;
-}
+    export namespace DomEvents {
+        export const keydown = 'keydown';
+        export const click = 'click';
+    }
 
-export class ExtensionInstallStatus {
-    public static readonly Started = 'Started';
-    public static readonly Succeeded = 'Succeeded';
-    public static readonly Failed = 'Failed';
-}
+    export namespace RuntimeImage {
+        export const v1 = 'v1';
+        export const v2 = 'v2';
+        export const custom = 'custom';
+    }
 
-export class DomEvents {
-    public static readonly keydown = 'keydown';
-    public static readonly click = 'click';
-}
+    export namespace HttpConstants {
+        export const statusCodeMap = {
+            0: 'Unknown HTTP Error',
+            100: 'Continue',
+            101: 'Switching Protocols',
+            102: 'Processing',
+            200: 'OK',
+            201: 'Created',
+            202: 'Accepted',
+            203: 'Non-Authoritative Information',
+            204: 'No Content',
+            205: 'Reset Content',
+            206: 'Partial Content',
+            300: 'Multiple Choices',
+            301: 'Moved Permanently',
+            302: 'Found',
+            303: 'See Other',
+            304: 'Not Modified',
+            305: 'Use Proxy',
+            306: '(Unused)',
+            307: 'Temporary Redirect',
+            400: 'Bad Request',
+            401: 'Unauthorized',
+            402: 'Payment Required',
+            403: 'Forbidden',
+            404: 'Not Found',
+            405: 'Method Not Allowed',
+            406: 'Not Acceptable',
+            407: 'Proxy Authentication Required',
+            408: 'Request Timeout',
+            409: 'Conflict',
+            410: 'Gone',
+            411: 'Length Required',
+            412: 'Precondition Failed',
+            413: 'Request Entity Too Large',
+            414: 'Request-URI Too Long',
+            415: 'Unsupported Media Type',
+            416: 'Requested Range Not Satisfiable',
+            417: 'Expectation Failed',
+            500: 'Internal Server Error',
+            501: 'Not Implemented',
+            502: 'Bad Gateway',
+            503: 'Service Unavailable',
+            504: 'Gateway Timeout',
+            505: 'HTTP Version Not Supported'
+        };
 
-export class RuntimeImage {
-    public static readonly v1 = "v1";
-    public static readonly v2 = "v2";
-    public static readonly custom = "custom";
+        export const genericStatusCodeMap = {
+            100: 'Informational',
+            200: 'Success',
+            300: 'Redirection',
+            400: 'Client Error',
+            500: 'Server Error'
+        };
+    }
 }

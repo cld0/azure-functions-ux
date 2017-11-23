@@ -4,22 +4,13 @@ import { FunctionAppContext } from './services/functions-service';
 
 export namespace Preconditions {
     export type PreconditionErrorId = string;
+    export type HttpPreconditions = 'NotStopped' | 'ReachableLoadballancer' | 'NotOverQuota' | 'NoEasyAuth' | 'RuntimeAvailable' | 'NoClientCertificate';
     export type PreconditionMap = {[key in HttpPreconditions]: HttpPrecondition };
-    export enum HttpPreconditions {
-        NotStopped = 'NotStopped',
-        ReachableLoadballancer = 'ReachableLoadballancer',
-        NotOverQuota = 'NotOverQuota',
-        NoEasyAuth = 'NoEasyAuth',
-        RuntimeAvailable = 'RuntimeAvailable',
-        NoClientCertificate = 'NoClientCertificate'
-    }
+    export type DataService = CacheService;
 
     export interface PreconditionResult {
-        conditionMet: boolean;
-        errorId: PreconditionErrorId;
+        conditionMet: boolean; errorId: PreconditionErrorId;
     }
-
-    export type DataService = CacheService;
 
     export abstract class HttpPrecondition {
         constructor(protected dataService: DataService) { }
